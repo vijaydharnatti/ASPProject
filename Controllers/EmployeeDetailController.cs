@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using POC1Application.Models;
 using System;
 using System.Collections.Generic;
@@ -14,14 +15,15 @@ namespace POC1Application.Controllers
     public class EmployeeDetailController : ControllerBase
     {
         private readonly EmployeeDetailContext context;
-        public EmployeeDetailController()
+        public EmployeeDetailController(EmployeeDetailContext _context)
         {
-            context = new EmployeeDetailContext();
+            context = _context;
 
         }
 
         // POST api/<EmployeeDetailController>
         //RouteAttribute(["api/EmployeeDetail/AddEmployee"])
+        [Authorize]
         [HttpPost]
         [Route("EmployeeDetail/AddEmployee")]
 
@@ -37,7 +39,7 @@ namespace POC1Application.Controllers
                     context.SaveChanges();
                 }
             }
-            catch (Exception ex) {
+            catch {
                 throw;
             }        
           
@@ -56,19 +58,19 @@ namespace POC1Application.Controllers
                
                 return data;
             }
-            catch (Exception ex) {
+            catch {
                 throw;
             }
         }
 
         // GET api/<EmployeeDetailController>/5
-        [HttpGet("{id}")]
-        [Route("EmployeeDetail/Add")]
+        //[HttpGet("{id}")]
+        //[Route("EmployeeDetail/Add")]
 
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
        
 
@@ -81,11 +83,11 @@ namespace POC1Application.Controllers
         //}
 
         // DELETE api/<EmployeeDetailController>/5
-        [HttpDelete("{id}")]
-        [Route("EmployeeDetail/Delete")]
+        //[HttpDelete("{id}")]
+        //[Route("EmployeeDetail/Delete")]
 
-        public void Delete(int id)
-        {
-        }
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
