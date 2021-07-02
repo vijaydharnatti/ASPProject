@@ -120,3 +120,11 @@ G:\ASPNET CORE\POC1Application\bin\Debug\net5.0\Microsoft.AspNetCore.Authenticat
 G:\ASPNET CORE\POC1Application\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 G:\ASPNET CORE\POC1Application\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 G:\ASPNET CORE\POC1Application\obj\Debug\net5.0\POC1Application.MvcApplicationPartsAssemblyInfo.cs
+G:\ASPNET CORE\POC1Application\bin\Debug\net5.0\Azure.Core.dll
+G:\ASPNET CORE\POC1Application\bin\Debug\net5.0\Azure.Identity.dll
+G:\ASPNET CORE\POC1Application\bin\Debug\net5.0\Azure.Security.KeyVault.Certificates.dll
+G:\ASPNET CORE\POC1Application\bin\Debug\net5.0\Azure.Security.KeyVault.Secrets.dll
+G:\ASPNET CORE\POC1Application\bin\Debug\net5.0\Microsoft.Identity.Client.Extensions.Msal.dll
+G:\ASPNET CORE\POC1Application\bin\Debug\net5.0\Microsoft.Identity.Web.dll
+G:\ASPNET CORE\POC1Application\bin\Debug\net5.0\System.Text.Encodings.Web.dll
+G:\ASPNET CORE\POC1Application\obj\Debug\net5.0\POC1Application.csproj.AssemblyReference.cache

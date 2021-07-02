@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using POC1Application.Models;
 using System;
@@ -10,8 +11,9 @@ using System.Threading.Tasks;
 
 namespace POC1Application.Controllers
 {
-    
+    [Authorize]
     [ApiController]
+    [Route("api/[controller]")]
     public class EmployeeDetailController : ControllerBase
     {
         private readonly EmployeeDetailContext context;
@@ -23,9 +25,9 @@ namespace POC1Application.Controllers
 
         // POST api/<EmployeeDetailController>
         //RouteAttribute(["api/EmployeeDetail/AddEmployee"])
-        [Authorize]
+
         [HttpPost]
-        [Route("EmployeeDetail/AddEmployee")]
+       // [Route("EmployeeDetail/AddEmployee")]
 
         public void AddEmployee(EmployeeDetails ObjEmployeeDetails)
         {
@@ -46,8 +48,9 @@ namespace POC1Application.Controllers
         }
 
         // GET: api/<EmployeeDetailController>
+
         [HttpGet]
-        [Route("EmployeeDetail/Get")]
+      //  [Route("EmployeeDetail/Get")]
 
         public List<EmployeeDetails> Get()
         {
