@@ -23,18 +23,16 @@ namespace POC1Application.Controllers
 
         }
 
-        // POST api/<EmployeeDetailController>
-        //RouteAttribute(["api/EmployeeDetail/AddEmployee"])
 
+        /// <summary>
+        /// AddEmployee
+        /// </summary>
+        /// <param name="ObjEmployeeDetails"></param>
         [HttpPost]
-       // [Route("EmployeeDetail/AddEmployee")]
-
         public void AddEmployee(EmployeeDetails ObjEmployeeDetails)
         {
             try {
-                //EmployeeDetails ObjEmployeeDetails = new EmployeeDetails();
-                //ObjEmployeeDetails.EmployeeName = "first";
-                //ObjEmployeeDetails.Salary = 1000;
+              
                 if (ObjEmployeeDetails != null)
                 {
                     context.Add(ObjEmployeeDetails);
@@ -47,14 +45,14 @@ namespace POC1Application.Controllers
           
         }
 
-        // GET: api/<EmployeeDetailController>
 
+        /// <summary>
+        /// Get
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-      //  [Route("EmployeeDetail/Get")]
-
         public List<EmployeeDetails> Get()
         {
-           // List<EmployeeDetails> objEmployeeDetails = new List<EmployeeDetails>();
             try
             {
                 var data = context.EmployeeDetails.ToList();
@@ -66,31 +64,6 @@ namespace POC1Application.Controllers
             }
         }
 
-        // GET api/<EmployeeDetailController>/5
-        //[HttpGet("{id}")]
-        //[Route("EmployeeDetail/Add")]
-
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
        
-
-        //// PUT api/<EmployeeDetailController>/5
-        //[HttpPut("{id}")]
-        //[Route("EmployeeDetail/AddEmploy")]
-
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        // DELETE api/<EmployeeDetailController>/5
-        //[HttpDelete("{id}")]
-        //[Route("EmployeeDetail/Delete")]
-
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

@@ -22,7 +22,6 @@ namespace POC1Application
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,75 +32,49 @@ namespace POC1Application
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //        services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
-            //.AddAzureADBearer(options => Configuration.Bind(key: "AzureAd", options));
-
+          
+            //Authorization for User
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy(name: MyAllowSpecificOrigins,
-            //                      builder =>
-            //                      {
-            //                          builder.WithOrigins("http://localhost:4200", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"
-            //                                              )
-            //                           .AllowAnyHeader().AllowAnyMethod();
-            //                      });
-            //});
-           
-services.AddCors(c =>
-{
-    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
-});
 
+            //CORS Policy
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+
+
+
+            //DataBase Connection
             string connection = Configuration.GetConnectionString("DevConnection");
             services.AddDbContext<EmployeeDetailContext>(option =>
                 option.UseSqlServer(connection)
 
             );
 
-            services.AddControllers();
+            services.AddControllers();        
           
-          
-            //services.AddCors(options=> options.AddDefaultPolicy(
-            //   builder => builder.WithOrigins("http://localhost:4200") 
-            //   .AllowAnyMethod()
-            //   .AllowAnyHeader()
-
-            //    ));
+           
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //app.UseCors(option=>
-            //option.WithOrigins("*")
-            //.AllowAnyMethod()
-            //.AllowAnyHeader()
-            //);
+           
             app.UseCors(x => x
-         .AllowAnyOrigin()
-         .AllowAnyMethod()
-         .AllowAnyHeader());
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+           
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseRouting();
-            //app.UseCors("MyAllowSpecificOrigins");
-            //app.UseCors(option =>
-            //option.WithOrigins("*")
-            //.AllowAnyMethod()
-            //.WithHeaders("*")
-
-            //);
+            app.UseRouting();          
 
             app.UseAuthentication();
             app.UseAuthorization();
-
-
-
 
             app.UseEndpoints(endpoints =>
             {
